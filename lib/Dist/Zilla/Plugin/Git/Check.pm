@@ -1,8 +1,19 @@
+#
+# This file is part of Dist-Zilla-Plugin-Git
+#
+# This software is copyright (c) 2009 by Jerome Quelin.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 use 5.008;
 use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Git::Check;
+{
+  $Dist::Zilla::Plugin::Git::Check::VERSION = '1.121010';
+}
 # ABSTRACT: check your git repository before releasing
 
 use Git::Wrapper;
@@ -59,11 +70,17 @@ sub before_release {
 
 
 1;
-__END__
 
-=for Pod::Coverage
-    before_release
 
+=pod
+
+=head1 NAME
+
+Dist::Zilla::Plugin::Git::Check - check your git repository before releasing
+
+=head1 VERSION
+
+version 1.121010
 
 =head1 SYNOPSIS
 
@@ -73,7 +90,6 @@ In your F<dist.ini>:
     allow_dirty = dist.ini
     allow_dirty = README
     changelog = Changes      ; this is the default
-
 
 =head1 DESCRIPTION
 
@@ -94,7 +110,6 @@ C<allow_dirty> can be modified locally, though.
 If those conditions are not met, the plugin will die, and the release
 will thus be aborted. This lets you fix the problems before continuing.
 
-
 The plugin accepts the following options:
 
 =over 4
@@ -107,4 +122,22 @@ list is F<dist.ini> and the changelog file given by C<changelog>.  You
 can use C<allow_dirty => to prohibit all local modifications.
 
 =back
+
+=for Pod::Coverage before_release
+
+=head1 AUTHOR
+
+Jerome Quelin
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Jerome Quelin.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+
+__END__
 
