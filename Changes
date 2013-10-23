@@ -1,6 +1,8 @@
 Revision history for Dist::Zilla::Plugin::Git
 
 {{$NEXT}}
+ - Fix CommitBuild on DZil 5 (kent fredric)
+ - Cease using deprecated Class::MOP methods (kent fredric)
 
 2.016     2013-10-19 18:27:32 Europe/Paris
  - fix exclude_filename to not match partial paths (karen etheridge)
