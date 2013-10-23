@@ -103,7 +103,12 @@ sub _commit_build {
     my $target_branch = _format_branch( $branch, $self );
 
     for my $file ( @{ $self->zilla->files } ) {
-        my ( $name, $content ) = ( $file->name, $file->content );
+        my ( $name, $content );
+        if ( eval { Dist::Zilla->VERSION(5.000) } ) {
+            ($name,$content) = ( $file->name, $file->encoded_content );
+        } else {
+            ($name,$content) = ( $file->name, $file->content );
+        }
         my ( $outfile ) = $dir->file( $name );
         $outfile->parent->mkpath();
         my $fd = $outfile->openw;
